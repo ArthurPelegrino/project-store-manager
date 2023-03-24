@@ -14,7 +14,6 @@ const getProductById = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await productsService.getProductById(id);
   if (type) {
-    // console.log(message);
     return res.status(404).json({ message });
   }
 
