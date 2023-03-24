@@ -1,14 +1,14 @@
-const camelize = require('camelize');
+// const camelize = require('camelize');
 const snakeize = require('snakeize');
 
 const connection = require('./connection');
 
 const getAllProducts = async () => {
   const [products] = await connection.execute(
-    'SELECT * FROM products',
+    'SELECT * FROM StoreManager.products',
   );
 
-  return camelize(products);
+  return products;
 };
 
 const getProductById = async (productId) => {
@@ -16,7 +16,7 @@ const getProductById = async (productId) => {
     'SELECT * FROM products WHERE id = ?',
     [productId],
   );
-  return camelize(product);
+  return product;
 };
 
 const addNewProduct = async (name) => {

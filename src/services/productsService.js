@@ -2,6 +2,7 @@ const { productsModel } = require('../models');
 
 const getAllProducts = async () => {
   const products = await productsModel.getAllProducts();
+  console.log(products);
   return { type: null, message: products };
 };
 
@@ -21,6 +22,7 @@ const addNewProduct = async (name) => {
 
   return { type: null, message: newProduct };
 };
+
 module.exports = {
   getAllProducts,
   getProductById,
