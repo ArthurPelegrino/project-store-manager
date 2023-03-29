@@ -12,6 +12,7 @@ const getAllProducts = async () => {
 };
 
 const getProductById = async (productId) => {
+  console.log('@@@@ productId', productId);
   const [[product]] = await connection.execute(
     'SELECT * FROM products WHERE id = ?',
     [productId],
@@ -19,16 +20,16 @@ const getProductById = async (productId) => {
   return product;
 };
 
-const addNewProduct = async (name) => {
-  const columns = Object.keys(snakeize(name)).join(', ');
+const addNewProduct = async (products) => {
+  const columns = Object.keys(snakeize(products)).join(', ');
   
-    const placeholders = Object.keys(name)
+    const placeholders = Object.keys(products)
     .map((_key) => '?')
     .join(', ');
   
     const [{ insertId }] = await connection.execute(
       `INSERT INTO products (${columns}) VALUE (${placeholders})`,
-      [...Object.values(name)],
+      [...Object.values(products)],
     );
   
     return insertId;
