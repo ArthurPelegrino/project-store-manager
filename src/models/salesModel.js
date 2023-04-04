@@ -7,7 +7,7 @@ const connection = require('./connection');
 
 const getAllSales = async () => {
   const [products] = await connection.execute(
-    'SELECT * FROM StoreManager.sales',
+    'SELECT * FROM StoreManager.sales AND StoreManager.sales_products',
   );
 
   return products;
@@ -23,6 +23,7 @@ const addNewSaleId = async () => {
   const [{ insertId }] = await connection.execute(
     'INSERT INTO sales (date) VALUE (now())',
   );
+  console.log('32894723894732987498', insertId);
   return insertId;
 };
 

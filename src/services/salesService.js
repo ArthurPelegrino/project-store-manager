@@ -9,17 +9,14 @@ const getAllSales = async () => {
 
 const addNewSale = async (requisition) => {
   const saleId = await salesModel.addNewSaleId();
-  console.log(saleId);
   
- await Promise.all(
+await Promise.all(
     requisition.map((element) => salesModel.addNewSale({
         saleId,
         productId: element.productId,
         quantity: element.quantity,
       })),
   );
-  
-  // const newSale = await salesModel.getSaleById();
 
   return {
     type: null,

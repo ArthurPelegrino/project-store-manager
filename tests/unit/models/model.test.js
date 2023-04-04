@@ -24,10 +24,10 @@ describe('Testes de unidade das requisições de Produtos', function () {
     expect(result).to.be.deep.equal(allProducts[0])
   })
   
-  it.only('', async function () {
-    const teste = await salesService.addNewSale();
-    console.log(teste)
-  })
+  // it.only('', async function () {
+  //   const teste = await salesService.addNewSale();
+  //   console.log(teste)
+  // })
   afterEach(function () {
     sinon.restore();
   });
