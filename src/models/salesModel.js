@@ -1,5 +1,5 @@
 // const snakeize = require('snakeize');
-const camelize = require('camelize');
+// const camelize = require('camelize');
 // const { newSale } = require('../controllers/salesController');
 
 const connection = require('./connection');
@@ -7,17 +7,35 @@ const connection = require('./connection');
 
 const getAllSales = async () => {
   const [products] = await connection.execute(
-    'SELECT * FROM StoreManager.sales AND StoreManager.sales_products',
+   `SELECT s.id as saleId, s.date, sp.product_id as productId, sp.quantity
+    FROM StoreManager.sales as s 
+    INNER JOIN StoreManager.sales_products as sp ON s.id = sp.sale_id
+    ORDER BY saleId ASC, productId ASC`,
   );
 
   return products;
 };
 
-const getSaleById = async (saleId) => {
-    const [[sale]] = await connection.execute('SELECT * FROM passenger WHERE id = ?',
-    [saleId]);
-    return camelize(sale);
+const getSaleById = async (id) => {
+  const [sale] = await connection.execute(
+   `SELECT s.date, sp.product_id as productId, sp.quantity
+    FROM StoreManager.sales as s 
+    INNER JOIN StoreManager.sales_products as sp ON s.id = sp.sale_id
+    WHERE s.id = ?`,
+    [id],
+  );
+
+  return sale;
 };
+
+// const getProductById = async (productId) => {
+//   console.log('@@@@ productId', productId);
+//   const [[product]] = await connection.execute(
+//     'SELECT * FROM products WHERE id = ?',
+//     [productId],
+//   );
+//   return product;
+// };
 
 const addNewSaleId = async () => {
   const [{ insertId }] = await connection.execute(
@@ -46,6 +64,6 @@ const addNewSale = async ({ saleId, productId, quantity }) => {
 module.exports = {
   getAllSales,
   addNewSale,
-  getSaleById,
   addNewSaleId,
+  getSaleById,
 };

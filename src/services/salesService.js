@@ -27,7 +27,17 @@ await Promise.all(
   };
 };
 
+const getSaleById = async (id) => {
+  const sales = await salesModel.getSaleById(id);
+
+  if (!sales.length) {
+    return { type: 'PRODUCT_NOT_FOUND', message: 'Sale not found' };
+  }
+  return { type: null, message: sales };
+};
+
 module.exports = {
   getAllSales,
   addNewSale,
+  getSaleById,
 };
