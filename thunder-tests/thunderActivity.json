@@ -32,18 +32,13 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/products",
-    "url": "http://localhost:3001/products/33",
+    "url": "http://localhost:3001/products/1",
     "method": "GET",
     "sortNum": 0,
     "created": "2023-03-24T04:59:22.087Z",
-    "modified": "2023-03-28T17:55:09.723Z",
+    "modified": "2023-04-05T22:37:32.007Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"name\": \"aa\"\n}",
-      "form": []
-    },
     "tests": []
   },
   {
@@ -107,16 +102,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/sales",
-    "url": "http://localhost:3001/sales/6",
-    "method": "GET",
+    "url": "http://localhost:3001/products/2",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2023-03-24T20:46:24.251Z",
-    "modified": "2023-04-04T14:06:57.595Z",
+    "modified": "2023-04-05T23:24:59.703Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "  [\n    {\n    \"productId\": 2,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  }\n  ]\n",
+      "raw": "{\n  \"name\": \"Martelo do Bsdsdatman\"\n}",
       "form": []
     },
     "tests": []
